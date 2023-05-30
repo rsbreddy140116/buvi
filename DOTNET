@@ -1,0 +1,49 @@
+using System;
+class Employee
+{
+    
+    public string First_name, Last_name, Position;
+
+    public virtual void Salary_Generation(int Base_pay)
+    {
+        double Pf = Base_pay / 2 * 0.16;
+        double HI = Base_pay * .05;
+        double IT = Base_pay * .25;
+        double Total_Salary = Base_pay - Pf - HI - IT;
+        Console.WriteLine(Total_Salary);
+    }
+    
+}
+class HR : Employee
+{
+    public override void Salary_Generation(int HR_pay)
+    {
+        HR_pay = 100000;
+    }
+}
+class Manager : Employee
+{
+    public override void Salary_Generation(int Manager_pay)
+    {
+        Manager_pay = 150000;
+    }
+}
+class Intern : Employee
+{
+    public override void Salary_Generation(int Intern_pay)
+    {
+        Intern_pay = 80000;
+    }
+}
+class Program
+{
+    public static void Main(string[] aargs)
+    {
+        Employee emp = new Employee();
+        Employee hr = new HR();
+        Employee manager = new Manager();
+        Employee intern = new Intern();
+        hr.Salary_Generation();
+        
+    }
+}
